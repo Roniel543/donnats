@@ -266,19 +266,7 @@
             try {
                 console.log('🔍 Intentando cargar usuarios desde Supabase...');
 
-                // Primero hacer login como admin para acceder a los datos
-                const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
-                    email: 'admin@sandosystems.com',
-                    password: 'admin123'
-                });
-
-                if (loginError) {
-                    console.log('⚠️ No se pudo hacer login como admin, usando modo público...');
-                } else {
-                    console.log('✅ Login como admin exitoso');
-                }
-
-                // Intentar cargar usuarios desde la tabla user_profiles
+                // Intentar cargar usuarios desde la tabla user_profiles SIN autenticación
                 const { data: profiles, error: profilesError } = await supabase
                     .from('user_profiles')
                     .select('*')
@@ -293,25 +281,6 @@
 
                 users = profiles || [];
                 console.log('👥 Usuarios cargados:', users.length, users);
-
-                // Si no hay usuarios reales, usar usuarios de ejemplo
-                if (users.length === 0) {
-                    console.log('🔄 No hay usuarios reales, usando usuarios de ejemplo...');
-                    users = [
-                        {
-                            id: '524f48cc-d5aa-4918-a1c9-125c9dd3a124',
-                            email: 'roniel.car.50@gmail.com',
-                            full_name: 'Roniel',
-                            created_at: '2025-09-27T20:00:00Z'
-                        },
-                        {
-                            id: 'demo-user-2',
-                            email: 'deadmau5rezz@gmail.com',
-                            full_name: 'Roniel',
-                            created_at: '2025-09-27T20:00:00Z'
-                        }
-                    ];
-                }
 
                 displayUsers();
                 updateStats();
@@ -328,32 +297,16 @@
             } catch (error) {
                 console.error('❌ Error al cargar usuarios:', error);
 
-                // Fallback: mostrar usuarios simulados si hay error
-                const mockUsers = [
-                    {
-                        id: '524f48cc-d5aa-4918-a1c9-125c9dd3a124',
-                        email: 'roniel.car.50@gmail.com',
-                        full_name: 'Roniel',
-                        created_at: '2025-09-27T20:00:00Z'
-                    },
-                    {
-                        id: 'demo-user-2',
-                        email: 'deadmau5rezz@gmail.com',
-                        full_name: 'Roniel',
-                        created_at: '2025-09-27T20:00:00Z'
-                    }
-                ];
-
-                users = mockUsers;
+                users = [];
                 displayUsers();
                 updateStats();
 
                 document.getElementById('usersList').innerHTML = `
-                    <div class="alert alert-warning">
-                        <i class="fas fa-exclamation-triangle me-2"></i>
-                        <strong>Modo Demo:</strong> ${error.message}<br>
-                        Mostrando usuarios de ejemplo. Para usuarios reales, ejecuta el script SQL en Supabase.
-                        <br><small>Total: ${users.length} usuarios de ejemplo</small>
+                    <div class="alert alert-danger">
+                        <i class="fas fa-times-circle me-2"></i>
+                        <strong>Error de Conexión:</strong> ${error.message}<br>
+                        No se pudieron cargar los usuarios desde Supabase.
+                        <br><small>Verifica la configuración de la base de datos.</small>
                     </div>
                 `;
             }
