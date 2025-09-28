@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Pagina de login para SANDO SYSTEMS -->
+<!-- Aqui los usuarios pueden iniciar sesion para acceder al sistema -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANDO SYSTEMS - Login</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/styles.css">
+
+    <style>
+        /* Estilos especificos para la pagina de login */
+        .login-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-logo img {
+            height: 60px;
+        }
+
+        .form-floating {
+            margin-bottom: 1rem;
+        }
+
+        .btn-login {
+            background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+        }
+
+        .alert {
+            border-radius: 10px;
+            border: none;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .back-link a {
+            color: #7c3aed;
+            text-decoration: none;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <!-- Logo de la empresa -->
+            <div class="login-logo">
+                <img src="img/losando.png" alt="SANDO SYSTEMS" class="img-fluid">
+                <h3 class="text-purple mt-2">SANDO SYSTEMS</h3>
+                <p class="text-muted">Iniciar Sesion</p>
+            </div>
+
+            <!-- Alerta para mostrar mensajes -->
+            <div id="alertContainer"></div>
+
+            <!-- Formulario de login -->
+            <form id="loginForm">
+                <!-- Campo de email -->
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="email" placeholder="Correo electronico" required>
+                    <label for="email">
+                        <i class="fas fa-envelope me-2"></i>Correo Electronico
+                    </label>
+                </div>
+
+                <!-- Campo de contraseña -->
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+                    <label for="password">
+                        <i class="fas fa-lock me-2"></i>Contraseña
+                    </label>
+                </div>
+
+                <!-- Boton de login -->
+                <button type="submit" class="btn btn-primary btn-login w-100 mb-3">
+                    <i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesion
+                </button>
+            </form>
+
+            <!-- Enlaces adicionales -->
+            <div class="text-center">
+                <p class="text-muted mb-2">¿No tienes cuenta?</p>
+                <a href="register.html" class="text-purple text-decoration-none">
+                    <i class="fas fa-user-plus me-1"></i>Registrarse
+                </a>
+            </div>
+
+            <!-- Enlace de regreso -->
+            <div class="back-link">
+                <a href="index.html">
+                    <i class="fas fa-arrow-left me-1"></i>Volver al inicio
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

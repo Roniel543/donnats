@@ -1,161 +1,242 @@
 <!DOCTYPE html>
 <html lang="es">
+<!-- Esta es la página principal de SANDO SYSTEMS, una empresa de soporte técnico -->
+<!-- Decidí usar Bootstrap porque es más fácil y rápido para hacer páginas responsive -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SANDO SYSTEMS - Soporte Técnico</title>
-    <link href="bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- Font Awesome para los iconos - lo saqué de CDN porque es más fácil -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Solo CSS mínimo necesario - 99% Bootstrap */
-        .navbar-gradient {
-            background: linear-gradient(135deg, #28a745 0%, #1e3a8a 100%);
-        }
+    <!-- Mi archivo CSS personalizado donde tengo los estilos que no están en Bootstrap -->
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/styles.css">
 
-        .contact-gradient {
-            background: linear-gradient(135deg, #86efac 0%, #a78bfa 100%);
-        }
-        .footer-gradient {
-            background: linear-gradient(135deg, #166534 0%, #1e3a8a 100%);
-        }
-        .text-purple {
-            color: #7c3aed !important;
-        }
-    </style>
 </head>
+
 <body>
-    <!-- Header -->
+    <!-- Barra de navegación principal -->
     <header>
+        <!-- Navbar de Bootstrap con gradiente personalizado -->
         <nav class="navbar navbar-expand-lg navbar-gradient">
             <div class="container">
+                <!-- Logo de la empresa -->
                 <a class="navbar-brand text-white fw-bold" href="#">
-                   <img src="img/losando.png" alt="SANDO SYSTEMS" class="me-2" style="height: 40px;">
+                    <img src="img/losando.png" alt="SANDO SYSTEMS" class="me-2" style="height: 40px;">
                 </a>
-                
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-                
+
+                <!-- Boton hamburguesa para móviles -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Menu de navegación -->
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                  <li class="nav-item">
+                        <!-- Enlace al inicio -->
+                        <li class="nav-item">
                             <a class="nav-link text-white fw-medium" href="#inicio">Inicio</a>
-                  </li>
-                  <li class="nav-item">
+                        </li>
+                        <!-- Enlace a la sección nosotros -->
+                        <li class="nav-item">
                             <a class="nav-link text-white fw-medium" href="#nosotros">Nosotros</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white fw-medium" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        </li>
+                        <!-- Dropdown de servicios -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white fw-medium" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Servicios
-                    </a>
-                    <ul class="dropdown-menu">
+                            </a>
+                            <!-- Submenú con los servicios que ofrecemos -->
+                            <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#servicios">Soporte Técnico de Pcs</a></li>
                                 <li><a class="dropdown-item" href="#servicios">Soporte Técnico de Pcs Online</a></li>
-                                <li><a class="dropdown-item" href="#servicios">Instalación de Cámaras de Seguridad</a></li>
+                                <li><a class="dropdown-item" href="#servicios">Instalación de Cámaras de Seguridad</a>
+                                </li>
                                 <li><a class="dropdown-item" href="#servicios">Instalación y Configuración</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
+                            </ul>
+                        </li>
+                        <!-- Enlace al formulario de contacto -->
+                        <li class="nav-item">
                             <a class="nav-link text-white fw-medium" href="#contacto">Contáctenos</a>
-                  </li>
-                </ul>
-              </div>
+                        </li>
+                        <!-- Botones de login y registro -->
+                        <li class="nav-item ms-3">
+                            <a class="btn btn-outline-light btn-sm me-2" href="login.html">
+                                <i class="fas fa-sign-in-alt me-1"></i>Login
+                            </a>
+                            <a class="btn btn-light btn-sm" href="register.html">
+                                <i class="fas fa-user-plus me-1"></i>Registro
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </nav>
+        </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Carrusel principal con las imagenes de la empresa -->
     <section id="inicio" class="hero-gradient">
+        <!-- Carousel de Bootstrap para mostrar las imagenes principales -->
         <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
+                <!-- Primera imagen del carrusel (activa por defecto) -->
                 <div class="carousel-item active">
-                    <img src="img/barner.png" class="d-block w-100" alt="SANDO SYSTEMS - Soporte Técnico" style="height: 500px; object-fit: cover;">
+                    <img src="img/barner.png" class="d-block w-100" alt="SANDO SYSTEMS - Soporte Tecnico"
+                        style="height: 500px; object-fit: cover;">
                 </div>
+                <!-- Segunda imagen del carrusel -->
                 <div class="carousel-item">
-                    <img src="img/barner2.png" class="d-block w-100" alt="SANDO SYSTEMS - Servicios" style="height: 500px; object-fit: cover;">
+                    <img src="img/barner2.png" class="d-block w-100" alt="SANDO SYSTEMS - Servicios"
+                        style="height: 500px; object-fit: cover;">
                 </div>
+                <!-- Tercera imagen del carrusel -->
                 <div class="carousel-item">
-                    <img src="img/barner3.png" class="d-block w-100" alt="SANDO SYSTEMS - Tecnología" style="height: 500px; object-fit: cover;">
+                    <img src="img/barner3.png" class="d-block w-100" alt="SANDO SYSTEMS - Tecnologia"
+                        style="height: 500px; object-fit: cover;">
                 </div>
             </div>
+            <!-- Boton para ir a la imagen anterior -->
             <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Anterior</span>
             </button>
+            <!-- Boton para ir a la siguiente imagen -->
             <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Siguiente</span>
             </button>
+            <!-- Indicadores del carrusel (los puntitos de abajo) -->
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
         </div>
+
+        <!-- Seccion de acceso al sistema -->
+        <div class="container position-relative" style="margin-top: -50px; z-index: 10;">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="bg-white rounded-4 shadow-lg p-4 text-center">
+                        <h4 class="text-purple fw-bold mb-3">
+                            <i class="fas fa-users me-2"></i>Acceso al Sistema
+                        </h4>
+                        <p class="text-muted mb-4">
+                            Accede a nuestro sistema para gestionar tus servicios y tickets de soporte tecnico
+                        </p>
+                        <div class="d-flex justify-content-center gap-3">
+                            <a href="login.html" class="btn btn-primary px-4 py-2 rounded-pill">
+                                <i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesion
+                            </a>
+                            <a href="register.html" class="btn btn-outline-primary px-4 py-2 rounded-pill">
+                                <i class="fas fa-user-plus me-2"></i>Crear Cuenta
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- About Section -->
+    <!-- Seccion "Quienes Somos" -->
     <section id="nosotros" class="py-5 bg-light">
         <div class="container">
+            <!-- Titulo principal de la seccion -->
             <h2 class="text-center text-purple fw-bold mb-5" style="font-size: 2.5rem;">Quienes Somos</h2>
             <div class="row align-items-center">
+                <!-- Columna izquierda con el texto descriptivo -->
                 <div class="col-lg-6">
+                    <!-- Primer parrafo sobre la empresa -->
                     <p class="text-muted fs-5 lh-lg mb-4">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea aliquam repudiandae labore debitis rem deserunt ex itaque accusamus? Ut blanditiis, odit perspiciatis tenetur sed tempora maxime non. Illum, aliquid accusantium!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea aliquam repudiandae labore debitis
+                        rem deserunt ex itaque accusamus? Ut blanditiis, odit perspiciatis tenetur sed tempora maxime
+                        non. Illum, aliquid accusantium!
                     </p>
+                    <!-- Segundo parrafo con mas informacion -->
                     <p class="text-muted fs-5 lh-lg">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea aliquam repudiandae labore debitis rem deserunt ex itaque accusamus? Ut blanditiis, odit perspiciatis tenetur sed tempora maxime non. Illum, aliquid accusantium!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea aliquam repudiandae labore debitis
+                        rem deserunt ex itaque accusamus? Ut blanditiis, odit perspiciatis tenetur sed tempora maxime
+                        non. Illum, aliquid accusantium!
                     </p>
                 </div>
+                <!-- Columna derecha con la imagen del equipo -->
                 <div class="col-lg-6">
-                    <img src="img/about-image.jpg" class="img-fluid rounded shadow" alt="SANDO SYSTEMS - Equipo de trabajo" style="height: 300px; object-fit: cover;">
+                    <img src="img/about-image.jpg" class="img-fluid rounded shadow"
+                        alt="SANDO SYSTEMS - Equipo de trabajo" style="height: 300px; object-fit: cover;">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Seccion de Servicios -->
     <section id="servicios" class="py-5">
         <div class="container">
+            <!-- Titulo de la seccion servicios -->
             <h2 class="text-center text-purple fw-bold mb-5" style="font-size: 2.5rem;">Servicios</h2>
             <div class="row g-4">
+                <!-- Primer servicio: Soporte Técnico de PCs -->
                 <div class="col-lg-4 col-md-6">
                     <div class="card h-100 shadow-sm border border-light-subtle rounded-3">
-                        <img src="img/service1.jpg" class="card-img-top" alt="Soporte Técnico de Pcs" style="height: 200px; object-fit: cover;">
+                        <!-- Imagen del servicio -->
+                        <img src="img/service1.jpg" class="card-img-top" alt="Soporte Técnico de Pcs"
+                            style="height: 200px; object-fit: cover;">
                         <div class="card-body d-flex flex-column">
+                            <!-- Titulo del servicio -->
                             <h5 class="card-title text-purple fw-bold">Soporte Técnico de Pcs</h5>
+                            <!-- Descripcin del servicio -->
                             <p class="card-text text-muted flex-grow-1">
-                                Ahora que ya sabes mucho más sobre el soporte técnico de computadoras, en la Escuela de Negocios especializada en formación online.
+                                Ahora que ya sabes mucho más sobre el soporte técnico de computadoras, en la Escuela de
+                                Negocios especializada en formación online.
                             </p>
+                            <!-- Botn para ver más información -->
                             <div class="text-center mt-auto">
                                 <button class="btn btn-primary btn-sm">Ver Más</button>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- Segundo servicio: Soporte Técnico Online -->
                 <div class="col-lg-4 col-md-6">
                     <div class="card h-100 shadow-sm border border-light-subtle rounded-3">
-                        <img src="img/service2.jpg" class="card-img-top" alt="Soporte Técnico Online" style="height: 200px; object-fit: cover;">
+                        <!-- Imagen del servicio online -->
+                        <img src="img/service2.jpg" class="card-img-top" alt="Soporte Técnico Online"
+                            style="height: 200px; object-fit: cover;">
                         <div class="card-body d-flex flex-column">
+                            <!-- Título del servicio online -->
                             <h5 class="card-title text-purple fw-bold">Soporte Técnico de Pcs Online</h5>
+                            <!-- Descripcion del servicio online -->
                             <p class="card-text text-muted flex-grow-1">
-                                Ahora que ya sabes mucho más sobre el soporte técnico de computadoras, en la Escuela de Negocios especializada en formación online.
+                                Ahora que ya sabes mucho más sobre el soporte técnico de computadoras, en la Escuela de
+                                Negocios especializada en formación online.
                             </p>
+                            <!-- Botón para ver más información -->
                             <div class="text-center mt-auto">
                                 <button class="btn btn-primary btn-sm">Ver Más</button>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- Tercer servicio: Instalación de Cámaras -->
                 <div class="col-lg-4 col-md-6">
                     <div class="card h-100 shadow-sm border border-light-subtle rounded-3">
-                        <img src="img/service3.jpg" class="card-img-top" alt="Instalación de Cámaras" style="height: 200px; object-fit: cover;">
+                        <!-- Imagen del servicio de cámaras -->
+                        <img src="img/service3.jpg" class="card-img-top" alt="Instalación de Cámaras"
+                            style="height: 200px; object-fit: cover;">
                         <div class="card-body d-flex flex-column">
+                            <!-- Título del servicio de cámaras -->
                             <h5 class="card-title text-purple fw-bold">Instalación de Cámaras de Seguridad</h5>
+                            <!-- Descripción del servicio de cámaras -->
                             <p class="card-text text-muted flex-grow-1">
-                                La seguridad electrónica actualmente desempeña un papel vital en nuestra protección, la instalación de cámaras de seguridad CCTV se ha convertido en una necesidad primordial.
+                                La seguridad electrónica actualmente desempeña un papel vital en nuestra protección, la
+                                instalación de cámaras de seguridad CCTV se ha convertido en una necesidad primordial.
                             </p>
+                            <!-- Botón para ver más información -->
                             <div class="text-center mt-auto">
                                 <button class="btn btn-primary btn-sm">Ver Más</button>
                             </div>
@@ -166,32 +247,45 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Seccion de Contacto -->
     <section id="contacto" class="contact-gradient py-5">
         <div class="container">
-            <h2 class="text-center text-purple fw-bold mb-5" style="font-size: 2.5rem;">Contáctenos</h2>
+            <!-- Titulo del formulario de contacto -->
+            <h2 class="text-center text-purple fw-bold mb-5" style="font-size: 2.5rem;">Contactenos</h2>
             <div class="row justify-content-center">
                 <div class="col-lg-10">
+                    <!-- Contenedor del formulario con fondo blanco -->
                     <div class="bg-white rounded-3 p-4 shadow">
                         <form>
+                            <!-- Primera fila del formulario con 3 campos -->
                             <div class="row mb-3">
+                                <!-- Campo de nombres -->
                                 <div class="col-md-4">
-                                    <label for="nombres" class="form-label text-purple fw-semibold">Nombres</label>
-                                    <input type="text" class="form-control" id="nombres" placeholder="Registre Sus Nombres Completos">
+                                    <label for="nombres" class="form-label fw-semibold">Nombres</label>
+                                    <input type="text" class="form-control" id="nombres"
+                                        placeholder="Registre Sus Nombres Completos">
                                 </div>
+                                <!-- Campo de email -->
                                 <div class="col-md-4">
-                                    <label for="email" class="form-label text-purple fw-semibold">Correo Electrónico</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Escriba sus correo aqui">
+                                    <label for="email" class="form-label fw-semibold">Correo
+                                        Electrónico</label>
+                                    <input type="email" class="form-control" id="email"
+                                        placeholder="Escriba sus correo aqui">
                                 </div>
+                                <!-- Campo de asunto -->
                                 <div class="col-md-4">
-                                    <label for="asunto" class="form-label text-purple fw-semibold">Asunto</label>
-                                    <input type="text" class="form-control" id="asunto" placeholder="Registre el Asunto">
+                                    <label for="asunto" class="form-label fw-semibold">Asunto</label>
+                                    <input type="text" class="form-control" id="asunto"
+                                        placeholder="Registre el Asunto">
                                 </div>
                             </div>
+                            <!-- Campo de mensaje (textarea) -->
                             <div class="mb-4">
-                                <label for="mensaje" class="form-label text-purple fw-semibold">Mensaje</label>
-                                <textarea class="form-control" id="mensaje" rows="4" placeholder="Escriba su mensaje a aenviar"></textarea>
+                                <label for="mensaje" class="form-label fw-semibold">Mensaje</label>
+                                <textarea class="form-control" id="mensaje" rows="4"
+                                    placeholder="Escriba su mensaje a aenviar"></textarea>
                             </div>
+                            <!-- Botón de envío centrado -->
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary px-4 py-2">Enviar</button>
                             </div>
@@ -202,16 +296,22 @@
         </div>
     </section>
 
+    <!-- Pie de pagina -->
     <footer class="footer-gradient text-white py-3">
         <div class="container">
             <div class="row align-items-center">
+                <!-- Columna izquierda con copyright -->
                 <div class="col-md-6">
                     <p class="mb-0 text-light">©2025 Copyright: Mis derechos reservados.com</p>
                 </div>
+                <!-- Columna derecha con redes sociales -->
                 <div class="col-md-6 text-end">
                     <div class="d-flex justify-content-end gap-3">
+                        <!-- Enlace a Facebook -->
                         <a href="#" class="text-primary fs-5"><i class="fab fa-facebook"></i></a>
+                        <!-- Enlace a Twitter -->
                         <a href="#" class="text-primary fs-5"><i class="fab fa-twitter"></i></a>
+                        <!-- Enlace a WhatsApp -->
                         <a href="#" class="text-primary fs-5"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
@@ -219,6 +319,8 @@
         </div>
     </footer>
 
+    <!-- Scripts de Bootstrap para que funcionen los componentes el js -->
     <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script>
 </body>
+
 </html>

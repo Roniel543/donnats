@@ -1,0 +1,54 @@
+/* Gradiente para la barra de navegacion */
+.navbar-gradient {
+    background: linear-gradient(135deg, #28a745 0%, #1e3a8a 100%);
+}
+
+/* Gradiente para la seccion de contacto */
+.contact-gradient {
+    background: linear-gradient(135deg, #86efac 0%, #a78bfa 100%);
+}
+
+/* Gradiente para el pie de pagina */
+.footer-gradient {
+    background: linear-gradient(135deg, #166534 0%, #1e3a8a 100%);
+}
+
+/* Color morado personalizado para los titulos */
+.text-purple {
+    color: #7c3aed !important;
+}
+
+/* Estilos para las tarjetas de servicios */
+.service-card {
+    /* Transicion suave para todos los cambios */
+    transition: all 0.3s ease;
+    /* Quito el borde por defecto de Bootstrap */
+    border: none !important;
+}
+
+/* Efecto cuando paso el mouse sobre la tarjeta */
+.service-card:hover {
+    /* La tarjeta se eleva un poco */
+    transform: translateY(-8px);
+    /* Sombra mas pronunciada para dar profundidad */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Efecto en la imagen cuando hago hover en la tarjeta */
+.service-card:hover .card-img-top {
+    /* La imagen se agranda un poquito */
+    transform: scale(1.05);
+}
+
+/* Transicion suave para las imagenes */
+.service-card .card-img-top {
+    transition: transform 0.3s ease;
+}
+
+/* Ajustes para moviles */
+/* En pantallas pequeñas las imagenes deben ser mas pequeñas */
+@media (max-width: 768px) {
+    .service-card .card-img-top {
+        height: 200px !important;
+    }
+}
