@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Panel de administracion para SANDO SYSTEMS -->
+<!-- Credenciales hardcodeadas para el profesor -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANDO SYSTEMS - Panel Admin</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/styles.css">
+    
+    <style>
+        /* Estilos para el panel de admin */
+        .admin-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+            padding: 2rem 0;
+        }
+        
+        .admin-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .admin-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .admin-logo {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+        
+        .login-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .user-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #7c3aed;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stats-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .btn-admin {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            color: white;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-admin:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(220, 53, 69, 0.4);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-container">
+        <div class="container">
+            <!-- Header del panel -->
+            <div class="admin-header">
+                <img src="img/losando.png" alt="SANDO SYSTEMS" class="admin-logo">
+                <h2 class="text-white fw-bold">Panel de Administracion</h2>
+                <p class="text-white opacity-75">Acceso exclusivo para administradores</p>
+            </div>
+            
+            <!-- Formulario de login de admin -->
+            <div id="loginSection" class="admin-card">
+                <div class="login-form">
+                    <h4 class="text-center text-purple mb-4">
+                        <i class="fas fa-shield-alt me-2"></i>Acceso de Administrador
+                    </h4>
+                    
+                    <div id="loginAlert" class="alert alert-danger d-none" role="alert"></div>
+                    
+                    <form id="adminLoginForm">
+                        <div class="mb-3">
+                            <label for="adminUsername" class="form-label fw-semibold">Usuario Admin</label>
+                            <input type="text" class="form-control" id="adminUsername" placeholder="Ingrese usuario admin" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="adminPassword" class="form-label fw-semibold">Contraseña Admin</label>
+                            <input type="password" class="form-control" id="adminPassword" placeholder="Ingrese contraseña admin" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100 mb-3">
+                            <i class="fas fa-sign-in-alt me-2"></i>Acceder al Panel
+                        </button>
+                    </form>
+                    
+                    <div class="text-center">
+                        <small class="text-muted">
+                            Credenciales de prueba:<br>
+                            Usuario: <strong>admin</strong><br>
+                            Contraseña: <strong>admin123</strong>
+                        </small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Panel de administracion (oculto inicialmente) -->
+            <div id="adminPanel" class="d-none">
+                <!-- Estadisticas -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="stats-card">
+                            <div class="stats-number" id="totalUsers">0</div>
+                            <div class="stats-label">Usuarios Registrados</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stats-card">
+                            <div class="stats-number" id="activeUsers">0</div>
+                            <div class="stats-label">Usuarios Activos</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stats-card">
+                            <div class="stats-number" id="todayUsers">0</div>
+                            <div class="stats-label">Registros Hoy</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lista de usuarios -->
+                <div class="admin-card">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="text-purple mb-0">
+                            <i class="fas fa-users me-2"></i>Usuarios Registrados
+                        </h4>
+                        <button onclick="logoutAdmin()" class="btn btn-admin">
+                            <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesion Admin
+                        </button>
+                    </div>
+                    
+                    <div id="usersList">
+                        <!-- Los usuarios se cargaran aqui -->
+                    </div>
+                    
+                    <div id="loadingUsers" class="text-center py-4">
+                        <div class="spinner-border text-purple" role="status">
+                            <span class="visually-hidden">Cargando usuarios...</span>
+                        </div>
+                        <p class="text-muted mt-2">Cargando usuarios desde Supabase...</p>
+                    </div>
+                </div>
+                
+                <!-- Informacion de conexion -->
+                <div class="admin-card">
+                    <h5 class="text-purple mb-3">
+                        <i class="fas fa-database me-2"></i>Estado de Conexion
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Base de Datos:</strong> <span class="text-success">Supabase Conectada</span></p>
+                            <p><strong>URL:</strong> <code>ejuycmhqsktlrxllemny.supabase.co</code></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Autenticacion:</strong> <span class="text-success">Activa</span></p>
+                            <p><strong>Despliegue:</strong> <span class="text-success">Vercel Production</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Configuracion de Supabase
+        const SUPABASE_URL = 'https://ejuycmhqsktlrxllemny.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVqdXljbWhxc2t0bHJ4bGxlbW55Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkwMjc3OTcsImV4cCI6MjA3NDYwMzc5N30.jXDjQVogYwTtxegRWPs2hwwLSRgEBdvnXbrhLN5TUdQ';
+        
+        // Inicializar Supabase
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        // Credenciales hardcodeadas para el profesor
+        const ADMIN_CREDENTIALS = {
+            username: 'admin',
+            password: 'admin123'
+        };
+        
+        // Variables globales
+        let isAdminLoggedIn = false;
+        let users = [];
+        
+        // Funcion para mostrar alertas
+        function showAlert(message, type = 'danger') {
+            const alertDiv = document.getElementById('loginAlert');
+            alertDiv.className = `alert alert-${type}`;
+            alertDiv.textContent = message;
+            alertDiv.classList.remove('d-none');
+            
+            setTimeout(() => {
+                alertDiv.classList.add('d-none');
+            }, 5000);
+        }
+        
+        // Funcion para cargar usuarios desde Supabase
+        async function loadUsers() {
+            try {
+                const { data, error } = await supabase.auth.admin.listUsers();
+                
+                if (error) {
+                    console.error('Error al cargar usuarios:', error);
+                    document.getElementById('usersList').innerHTML = `
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            No se pudieron cargar los usuarios. Error: ${error.message}
+                        </div>
+                    `;
+                    return;
+                }
+                
+                users = data.users || [];
+                displayUsers();
+                updateStats();
+                
+            } catch (error) {
+                console.error('Error inesperado:', error);
+                document.getElementById('usersList').innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-times-circle me-2"></i>
+                        Error de conexion con Supabase: ${error.message}
+                    </div>
+                `;
+            }
+        }
+        
+        // Funcion para mostrar usuarios
+        function displayUsers() {
+            const usersList = document.getElementById('usersList');
+            const loadingDiv = document.getElementById('loadingUsers');
+            
+            loadingDiv.classList.add('d-none');
+            
+            if (users.length === 0) {
+                usersList.innerHTML = `
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        No hay usuarios registrados aun.
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = '';
+            users.forEach((user, index) => {
+                const createdDate = new Date(user.created_at).toLocaleDateString('es-ES');
+                const initials = user.email ? user.email.charAt(0).toUpperCase() : 'U';
+                
+                html += `
+                    <div class="user-card">
+                        <div class="user-info">
+                            <div class="user-avatar">${initials}</div>
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">${user.email || 'Sin email'}</h6>
+                                <p class="text-muted mb-1">
+                                    <small>
+                                        <i class="fas fa-calendar me-1"></i>
+                                        Registrado: ${createdDate}
+                                    </small>
+                                </p>
+                                <p class="text-muted mb-0">
+                                    <small>
+                                        <i class="fas fa-id-badge me-1"></i>
+                                        ID: ${user.id.substring(0, 8)}...
+                                    </small>
+                                </p>
+                            </div>
+                            <div>
+                                <span class="badge bg-success">Activo</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            usersList.innerHTML = html;
+        }
+        
+        // Funcion para actualizar estadisticas
+        function updateStats() {
+            document.getElementById('totalUsers').textContent = users.length;
+            document.getElementById('activeUsers').textContent = users.length; // Todos estan activos por ahora
+            document.getElementById('todayUsers').textContent = users.filter(user => {
+                const today = new Date().toDateString();
+                const userDate = new Date(user.created_at).toDateString();
+                return today === userDate;
+            }).length;
+        }
+        
+        // Funcion para cerrar sesion de admin
+        function logoutAdmin() {
+            isAdminLoggedIn = false;
+            document.getElementById('loginSection').classList.remove('d-none');
+            document.getElementById('adminPanel').classList.add('d-none');
+            
+            // Limpiar formulario
+            document.getElementById('adminLoginForm').reset();
+        }
+        
+        // Event listener para el formulario de login
+        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            // Verificar credenciales hardcodeadas
+            if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+                isAdminLoggedIn = true;
+                document.getElementById('loginSection').classList.add('d-none');
+                document.getElementById('adminPanel').classList.remove('d-none');
+                
+                // Cargar usuarios
+                loadUsers();
+                
+            } else {
+                showAlert('Credenciales incorrectas. Usa: admin / admin123');
+            }
+        });
+        
+        // Verificar si ya esta logueado al cargar la pagina
+        document.addEventListener('DOMContentLoaded', function() {
+            // Por seguridad, siempre mostrar login al cargar
+            logoutAdmin();
+        });
+    </script>
+</body>
+
+</html>
